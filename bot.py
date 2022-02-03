@@ -21,16 +21,16 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    m1 = message
+    user_typing = message.author
     if message.author == client.user:
-        return
+        return # ensures that message is not from the bot
     # knock knock joke
     if message.content.lower() == "knock knock":
         await message.channel.send("Who's there?")
-        msg = await client.wait_for('message', check=lambda message: message.author == m1.author)
+        msg = await client.wait_for('message', check=lambda message: message.author == user_typing) # make sure that second message is the same author
         reply = msg.content + " who?"
         await message.channel.send(reply)
-        msg = await client.wait_for('message', check=lambda message: message.author == m1.author)
+        msg = await client.wait_for('message', check=lambda message: message.author == user_typing) # make sure that second message is the same author
         await message.channel.send("jajajaja")
 
     # what a save
