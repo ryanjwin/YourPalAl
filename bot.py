@@ -5,9 +5,13 @@ import random
 import discord
 from dotenv import load_dotenv
 
+
+# load bot token from env file
+# token can be created by creating an application on discord here: https://discord.com/login?redirect_to=%2Fdevelopers%2Fapplications
+
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
-GUILD = os.getenv('DISCORD_GUILD')
+
 
 client = discord.Client()
 
