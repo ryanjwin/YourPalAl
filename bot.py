@@ -17,7 +17,7 @@ client = discord.Client()
 
 @client.event
 async def on_ready():
-    print(f'{client.user} has connected to Discord!')
+    print(f'{client.user} has connected to Discord!') # prints in console if bot connection was successful
 
 @client.event
 async def on_message(message):
@@ -42,7 +42,7 @@ async def on_message(message):
     # roast me
     possibleRoasts = ["What did the 2 say to the 10?\n roast me hahaha", "I'd slap you, \nbut that would be animal abuse.", "I am not saying that I hate you,\n I'm just saying if you got hit by a bus, I would be driving that bus.", "https://www.menshealth.com/uk/style/a29772406/receding-hairline/", "When I see your face, there is not a thing I would change...\n except the direction I'm walking in", "A little advice homie\nhttps://www.wikihow.com/Flirt"]
     if message.content.lower() == "roast me":
-        idx = random.randint(0, len(possibleRoasts) - 1)
+        idx = random.randint(0, len(possibleRoasts) - 1) # generates random integer for index in list
         await message.channel.send(possibleRoasts[idx])
 
 client.run(TOKEN)
