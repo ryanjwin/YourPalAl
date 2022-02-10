@@ -1,2 +1,5 @@
 # Ignore local .env file
 .env
+
+#Ignore roast text file
+roast.txt
