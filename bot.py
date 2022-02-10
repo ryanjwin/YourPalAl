@@ -13,6 +13,7 @@ with open('roast.txt') as roast:
 # load bot token from env file
 # token can be created by creating an application on discord here: https://discord.com/login?redirect_to=%2Fdevelopers%2Fapplications
 
+
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
@@ -24,7 +25,7 @@ async def on_ready():
     print(f'{client.user} has connected to Discord!') # prints in console if bot connection was successful
 
 @client.event
-async def on_message(message, possibleRoasts):
+async def on_message(message):
     user_typing = message.author
     if message.author == client.user:
         return # ensures that message is not from the bot
