@@ -3,7 +3,10 @@ import os
 import random
 
 import discord
+# import pycord
 from dotenv import load_dotenv
+import pyjokes
+from jokeapi import Jokes
 
 # create list of possibleRoasts from local text file
 # name text file roast.txt
@@ -48,6 +51,39 @@ async def on_message(message):
     if message.content.lower() == "roast me":
         idx = random.randint(0, len(possibleRoasts) - 1) # generates random integer for index in list
         await message.channel.send(possibleRoasts[idx])
+
+    if message.content.lower() == "!pyjoke":
+        joke = pyjokes.get_joke()
+        await message.channel.send(joke)
+
+    if message.content.lower() == '!chucknorris':
+        joke = pyjokes.get_joke(category='chuck')
+        await message.channel.send(joke)
+
+    if message.content.lower() == '!pun':
+        jokes = await Jokes()
+        joke = await jokes.get_joke(blacklist=['nsfw'], category=['pun'])
+        await message.channel.send(joke['setup'])
+        await message.channel.send(joke['delivery'])
+
+    if message.content.lower() == '!joke':
+        jokes = await Jokes()
+        joke = await jokes.get_joke(blacklist=['nsfw'], category=['misc'])
+        await message.channel.send(joke['setup'])
+        await message.channel.send(joke['delivery'])
+
+    if message.content.lower() == '!programming':
+        jokes = await Jokes()
+        joke = await jokes.get_joke(blacklist=['nsfw'], category=['programming'])
+        await message.channel.send(joke['setup'])
+        await message.channel.send(joke['delivery'])
+
+    if message.content.lower() == '!dark':
+        jokes = await Jokes()
+        joke = await jokes.get_joke(category=['dark'])
+        await message.channel.send(joke['setup'])
+        await message.channel.send(joke['delivery'])
+
 
 client.run(TOKEN)
 
