@@ -78,12 +78,6 @@ async def on_message(message):
         await message.channel.send(joke['setup'])
         await message.channel.send(joke['delivery'])
 
-    if message.content.lower() == '!dark':
-        jokes = await Jokes()
-        joke = await jokes.get_joke(category=['dark'])
-        await message.channel.send(joke['setup'])
-        await message.channel.send(joke['delivery'])
-
 
 client.run(TOKEN)
 
